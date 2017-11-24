@@ -1,5 +1,17 @@
 class ProducList extends React.Component {
 
+    constructor(props){
+        super(props);
+
+        this.state ={
+            products: [],
+        }
+    }
+
+    componentDidMount(){
+        this.setState({ products: Seed.products })
+    }
+
     handleProductUpVote(productId) {
         console.log(productId + ' was upvoted.');
         
@@ -7,7 +19,7 @@ class ProducList extends React.Component {
 
     render() {
 
-        const products = Seed.products.sort((a,b) => {
+        const products = this.state.products.sort((a,b) => {
             return b.votes - a.votes
         });
 
